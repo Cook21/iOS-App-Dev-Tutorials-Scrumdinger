@@ -33,4 +33,7 @@ enum Theme: String {
         //因为是string类型的枚举，所以rawValue是对应的字符串
         Color(rawValue)
     }
+    var name: String {
+        rawValue.capitalized
+    }
 }
