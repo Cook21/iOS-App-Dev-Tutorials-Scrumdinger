@@ -36,12 +36,18 @@ extension DailyScrum {
         var lengthInMinutes: Double = 5
         var theme: Theme = .seafoam
     }
-    var temporaryData: TemporaryData {
+    var temporaryDataTemplate: TemporaryData {
         TemporaryData(title: title, attendees: attendees, lengthInMinutes: Double(lengthInMinutes), theme: theme)
+    }
+    mutating func updateFrom(temporaryData: TemporaryData){
+        self.title = temporaryData.title
+        self.attendees = temporaryData.attendees
+        self.lengthInMinutes = Int(temporaryData.lengthInMinutes)
+        self.theme = temporaryData.theme
     }
 }
 extension DailyScrum {
-    static let sampleData: [DailyScrum] =
+    static let sampleScrums: [DailyScrum] =
     [
         DailyScrum(title: "Design", attendees: ["Cathy", "Daisy", "Simon", "Jonathan"], lengthInMinutes: 10, theme: .yellow),
         DailyScrum(title: "App Dev", attendees: ["Katie", "Gray", "Euna", "Luis", "Darla"], lengthInMinutes: 5, theme: .orange),

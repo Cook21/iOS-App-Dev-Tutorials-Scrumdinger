@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailEditView: View {
-    @State private var data = DailyScrum.TemporaryData()
+    //被视图观察和修改的局部变量标记State
+    @Binding var data: DailyScrum.TemporaryData
     @State private var newAttendeeName = ""
     var body: some View {
         Form {
@@ -23,6 +24,7 @@ struct DetailEditView: View {
                     Text("\(Int(data.lengthInMinutes)) minutes")
                         .accessibilityHidden(true)
                 }
+                ThemePicker(selection: $data.theme)
             }
             Section(header: Text("Attendees")) {
                 ForEach(data.attendees) { attendee in
@@ -52,6 +54,6 @@ struct DetailEditView: View {
 
 struct DetailEditView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailEditView()
+        DetailEditView(data:  .constant(DailyScrum.sampleScrums[0].temporaryDataTemplate))
     }
 }

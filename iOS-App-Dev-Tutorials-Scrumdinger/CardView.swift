@@ -30,7 +30,7 @@ struct CardView: View {
 }
 
 struct CardView_Previews: PreviewProvider {
-    static var scrum = DailyScrum.sampleData[0]
+    static var scrum = DailyScrum.sampleScrums[0]
     static var previews: some View {
         CardView(scrum: scrum)
         //调整为在ListView内部的样子
