@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6AA3AC3B27B41092000D72DB /* ScrumTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA3AC3A27B41092000D72DB /* ScrumTimer.swift */; };
+		6AA3AC3D27B4D85C000D72DB /* AVPlayer+Ding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA3AC3C27B4D85C000D72DB /* AVPlayer+Ding.swift */; };
 		6AB52B3727A1062400BAC1D4 /* iOS_App_Dev_Tutorials_ScrumdingerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB52B3627A1062400BAC1D4 /* iOS_App_Dev_Tutorials_ScrumdingerApp.swift */; };
 		6AB52B3927A1062400BAC1D4 /* MeetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB52B3827A1062400BAC1D4 /* MeetingView.swift */; };
 		6AB52B3B27A1062400BAC1D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AB52B3A27A1062400BAC1D4 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6AA3AC3A27B41092000D72DB /* ScrumTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumTimer.swift; sourceTree = "<group>"; };
+		6AA3AC3C27B4D85C000D72DB /* AVPlayer+Ding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVPlayer+Ding.swift"; sourceTree = "<group>"; };
 		6AB52B3327A1062400BAC1D4 /* iOS-App-Dev-Tutorials-Scrumdinger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS-App-Dev-Tutorials-Scrumdinger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AB52B3627A1062400BAC1D4 /* iOS_App_Dev_Tutorials_ScrumdingerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOS_App_Dev_Tutorials_ScrumdingerApp.swift; sourceTree = "<group>"; };
 		6AB52B3827A1062400BAC1D4 /* MeetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingView.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 			children = (
 				6AB5949427AB97CD0078EBD8 /* Theme.swift */,
 				6AB5949627ACC9C40078EBD8 /* DailyScrum.swift */,
+				6AA3AC3A27B41092000D72DB /* ScrumTimer.swift */,
+				6AA3AC3C27B4D85C000D72DB /* AVPlayer+Ding.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -175,9 +181,11 @@
 				6AF92A4B27B15E6A00E539F3 /* ThemePicker.swift in Sources */,
 				6AB5949727ACC9C40078EBD8 /* DailyScrum.swift in Sources */,
 				6AFF6A6127B0F69E009197D9 /* DetailView.swift in Sources */,
+				6AA3AC3D27B4D85C000D72DB /* AVPlayer+Ding.swift in Sources */,
 				6AFF6A6327B1052C009197D9 /* DetailEditView.swift in Sources */,
 				6AB5949D27AE7A270078EBD8 /* TrailingIconLabelStyle.swift in Sources */,
 				6AB5949527AB97CD0078EBD8 /* Theme.swift in Sources */,
+				6AA3AC3B27B41092000D72DB /* ScrumTimer.swift in Sources */,
 				6AB5949F27B0CF7D0078EBD8 /* ScrumsView.swift in Sources */,
 				6AB52B3927A1062400BAC1D4 /* MeetingView.swift in Sources */,
 				6AB52B3727A1062400BAC1D4 /* iOS_App_Dev_Tutorials_ScrumdingerApp.swift in Sources */,
