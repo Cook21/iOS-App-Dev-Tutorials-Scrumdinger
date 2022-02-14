@@ -12,6 +12,11 @@ struct DailyScrum: Identifiable {
     var lengthInMinutes: Int
     var theme: Theme
     let id: UUID
+//    /// A new `ScrumTimer` using the meeting length and attendees in the `DailyScrum`.
+//    var timer: ScrumTimer {
+//        ScrumTimer(lengthInMinutes: lengthInMinutes, attendees: attendees)
+//    }
+    var history: [History] = []
     init(id: UUID = UUID(), title: String, attendees: [String], lengthInMinutes: Int, theme: Theme) {
         self.id = id
         self.title = title
@@ -35,6 +40,13 @@ extension DailyScrum {
         var attendees: [Attendee] = []
         var lengthInMinutes: Double = 5
         var theme: Theme = .seafoam
+    }
+    init(data: TemporaryData) {
+        id = UUID()
+        title = data.title
+        attendees = data.attendees
+        lengthInMinutes = Int(data.lengthInMinutes)
+        theme = data.theme
     }
     var temporaryDataTemplate: TemporaryData {
         TemporaryData(title: title, attendees: attendees, lengthInMinutes: Double(lengthInMinutes), theme: theme)

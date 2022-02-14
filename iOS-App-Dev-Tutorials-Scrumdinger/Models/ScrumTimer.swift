@@ -21,7 +21,7 @@ class ScrumTimer: ObservableObject {
         /// Id for Identifiable conformance.
         let id = UUID()
     }
-    
+    //加了Published就是被观察的变量，此外还有speakerChangedAction这个lambda函数暴露给外部，每当更新的时候回调
     /// The name of the meeting attendee who is speaking.
     @Published var activeSpeaker = ""
     /// The number of seconds since the beginning of the meeting.
@@ -29,7 +29,7 @@ class ScrumTimer: ObservableObject {
     /// The number of seconds until all attendees have had a turn to speak.
     @Published var secondsRemaining = 0
     /// All meeting attendees, listed in the order they will speak.
-    private(set) var speakers: [Speaker] = []
+    private(set) var speakers: [Speaker] = []//只把setter设置成private
     
     /// The scrum meeting length.
     private(set) var lengthInMinutes: Int
@@ -60,14 +60,14 @@ class ScrumTimer: ObservableObject {
      */
     init(lengthInMinutes: Int = 0, attendees: [DailyScrum.Attendee] = []) {
         self.lengthInMinutes = lengthInMinutes
-        self.speakers = attendees.toSpeakers
+        self.speakers = attendees.toSpeakers()
         secondsRemaining = lengthInSeconds
         activeSpeaker = speakerText
     }
     
     /// Start the timer.
     func startScrum() {
-        changeToNextSpeaker()
+        startTimer()
     }
     
     /// Stop the timer.
@@ -85,12 +85,14 @@ class ScrumTimer: ObservableObject {
     private func changeToNextSpeaker() {
         
         speakers[speakerIndex].isCompleted = true
-        
         secondsElapsedForSpeaker = 0
         guard speakerIndex + 1 < speakers.count else { return }
         speakerIndex += 1
         activeSpeaker = speakerText
+        startTimer()
         
+    }
+    private func startTimer() {
         secondsElapsed = speakerIndex * secondsPerSpeaker
         secondsRemaining = lengthInSeconds - secondsElapsed
         startDate = Date()
@@ -101,6 +103,7 @@ class ScrumTimer: ObservableObject {
             }
         }
     }
+    
     
     private func update(secondsElapsed: Int) {
         secondsElapsedForSpeaker = secondsElapsed
@@ -127,21 +130,14 @@ class ScrumTimer: ObservableObject {
      */
     func reset(lengthInMinutes: Int, attendees: [DailyScrum.Attendee]) {
         self.lengthInMinutes = lengthInMinutes
-        self.speakers = attendees.toSpeakers
+        self.speakers = attendees.toSpeakers()
         secondsRemaining = lengthInSeconds
         activeSpeaker = speakerText
     }
 }
 
-extension DailyScrum {
-    /// A new `ScrumTimer` using the meeting length and attendees in the `DailyScrum`.
-    var timer: ScrumTimer {
-        ScrumTimer(lengthInMinutes: lengthInMinutes, attendees: attendees)
-    }
-}
-
 extension Array where Element == DailyScrum.Attendee {
-    var toSpeakers: [ScrumTimer.Speaker] {
+    func toSpeakers()-> [ScrumTimer.Speaker] {
         if isEmpty {
             return [ScrumTimer.Speaker(name: "Speaker 1", isCompleted: false)]
         } else {
