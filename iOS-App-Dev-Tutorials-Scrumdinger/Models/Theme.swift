@@ -7,7 +7,7 @@
 
 import SwiftUI
 //CaseIterable:可以使用.allCases访问所有case
-enum Theme: String,  CaseIterable, Identifiable {
+enum Theme: String,  CaseIterable, Identifiable, Codable {
     case bubblegum
     case buttercup
     case indigo

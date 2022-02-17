@@ -38,10 +38,11 @@ struct MeetingView: View {
         }
         //退出后释放资源
         .onDisappear {
+            //不太对，改掉了
             let newHistory = History(attendees: scrum.attendees, lengthInMinutes: scrumTimer.secondsElapsed / 60)
                         scrum.history.insert(newHistory, at: 0)
             scrumTimer.stopScrum()
-            //不太对
+            
             
         }
     }

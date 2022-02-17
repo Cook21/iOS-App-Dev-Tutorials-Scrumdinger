@@ -11,6 +11,8 @@ struct ScrumsView: View {
     @Binding var scrums: [DailyScrum]
     @State private var isPresentingNewScrumView = false
     @State private var newScrumData = DailyScrum.TemporaryData()
+    @Environment(\.scenePhase) private var scenePhase
+    let saveAction: ()->Void
     var body: some View {
         NavigationView {
             List {
@@ -20,39 +22,43 @@ struct ScrumsView: View {
                         
                     }.listRowBackground(scrum.theme.mainColor)
                 }
-            }.navigationTitle("Daily Scrums")
-                .toolbar {
-                    Button(action: {isPresentingNewScrumView=true}) {
-                        Image(systemName: "plus")
-                    }
+            }
+            .navigationTitle("Daily Scrums")
+            .toolbar {
+                Button(action: {isPresentingNewScrumView=true}) {
+                    Image(systemName: "plus")
                 }
-                .sheet(isPresented: $isPresentingNewScrumView) {
-                    NavigationView {
-                        DetailEditView(data: $newScrumData)
-                            .toolbar {
-                                ToolbarItem(placement: .cancellationAction) {
-                                    Button("Dismiss") {
-                                        newScrumData = DailyScrum.TemporaryData()
-                                        isPresentingNewScrumView = false
-                                    }
-                                }
-                                ToolbarItem(placement: .confirmationAction) {
-                                    Button("Add") {
-                                        let newScrum = DailyScrum(data: newScrumData)
-                                        scrums.append(newScrum)
-                                        newScrumData = DailyScrum.TemporaryData()
-                                        isPresentingNewScrumView = false
-                                    }
+            }
+            .sheet(isPresented: $isPresentingNewScrumView) {
+                NavigationView {
+                    DetailEditView(data: $newScrumData)
+                        .toolbar {
+                            ToolbarItem(placement: .cancellationAction) {
+                                Button("Dismiss") {
+                                    newScrumData = DailyScrum.TemporaryData()
+                                    isPresentingNewScrumView = false
                                 }
                             }
-                    }
+                            ToolbarItem(placement: .confirmationAction) {
+                                Button("Add") {
+                                    let newScrum = DailyScrum(data: newScrumData)
+                                    scrums.append(newScrum)
+                                    newScrumData = DailyScrum.TemporaryData()
+                                    isPresentingNewScrumView = false
+                                }
+                            }
+                        }
                 }
+            }
+            .onChange(of: scenePhase) { phase in
+                if phase == .inactive { saveAction() }
+            }
         }
     }
 }
 
 struct ScrumsView_Previews: PreviewProvider {
     static var previews: some View {
-        ScrumsView(scrums: .constant(DailyScrum.sampleScrums))
+        ScrumsView(scrums: .constant(DailyScrum.sampleScrums),saveAction: {})
     }
 }
