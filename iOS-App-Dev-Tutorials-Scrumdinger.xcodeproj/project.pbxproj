@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1F11BB27C1EED90061217E /* ErrorWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F11BA27C1EED90061217E /* ErrorWrapper.swift */; };
+		6A1F11BD27C1EFAF0061217E /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1F11BC27C1EFAF0061217E /* ErrorView.swift */; };
 		6A22DD3927B7F012000E87C8 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6A22DD3827B7F012000E87C8 /* ding.wav */; };
 		6A22DD3C27BA47AA000E87C8 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DD3B27BA47AA000E87C8 /* History.swift */; };
 		6A22DD3E27BA5C7E000E87C8 /* ScrumStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A22DD3D27BA5C7E000E87C8 /* ScrumStore.swift */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1F11BA27C1EED90061217E /* ErrorWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorWrapper.swift; sourceTree = "<group>"; };
+		6A1F11BC27C1EFAF0061217E /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		6A22DD3827B7F012000E87C8 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		6A22DD3B27BA47AA000E87C8 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		6A22DD3D27BA5C7E000E87C8 /* ScrumStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrumStore.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				6AFF6A6027B0F69E009197D9 /* DetailView.swift */,
 				6AFF6A6227B1052C009197D9 /* DetailEditView.swift */,
 				6AF92A4A27B15E6A00E539F3 /* ThemePicker.swift */,
+				6A1F11BC27C1EFAF0061217E /* ErrorView.swift */,
 			);
 			path = "iOS-App-Dev-Tutorials-Scrumdinger";
 			sourceTree = "<group>";
@@ -140,6 +145,7 @@
 				6AA3AC3C27B4D85C000D72DB /* AVPlayer+Ding.swift */,
 				6A22DD3B27BA47AA000E87C8 /* History.swift */,
 				6A22DD3D27BA5C7E000E87C8 /* ScrumStore.swift */,
+				6A1F11BA27C1EED90061217E /* ErrorWrapper.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -225,10 +231,12 @@
 				6AA3AC4427B5402B000D72DB /* MeetingFooterView.swift in Sources */,
 				6AB5949D27AE7A270078EBD8 /* TrailingIconLabelStyle.swift in Sources */,
 				6AB5949527AB97CD0078EBD8 /* Theme.swift in Sources */,
+				6A1F11BB27C1EED90061217E /* ErrorWrapper.swift in Sources */,
 				6AA3AC3F27B4EF32000D72DB /* MeetingHeaderView.swift in Sources */,
 				6AA3AC4127B4FA74000D72DB /* ScrumProgressViewStyle.swift in Sources */,
 				6AA3AC3B27B41092000D72DB /* ScrumTimer.swift in Sources */,
 				6AB5949F27B0CF7D0078EBD8 /* ScrumsView.swift in Sources */,
+				6A1F11BD27C1EFAF0061217E /* ErrorView.swift in Sources */,
 				6AB52B3927A1062400BAC1D4 /* MeetingView.swift in Sources */,
 				6AB52B3727A1062400BAC1D4 /* iOS_App_Dev_Tutorials_ScrumdingerApp.swift in Sources */,
 				6AF92A4927B15CD000E539F3 /* ThemeView.swift in Sources */,
