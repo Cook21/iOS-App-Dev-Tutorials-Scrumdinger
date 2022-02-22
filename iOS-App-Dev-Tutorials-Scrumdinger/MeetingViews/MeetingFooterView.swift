@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct MeetingFooterView: View {
-    let speakers: [ScrumTimer.Speaker]
+    @ObservedObject var scrumTimer: ScrumTimer
+    var speakers: [ScrumTimer.Speaker] {
+        return scrumTimer.speakers
+    }
     //暴露出的回调函数
     var skipAction: ()->Void
-    private var currentSpeakerNumber: Int? {
-        guard let temp = speakers.firstIndex(where: { !$0.isCompleted }) else { return nil}
-        return temp + 1
+    private var currentSpeakerNumber: Int {
+        return scrumTimer.speakerIndex + 1
     }
     private var isLastSpeaker: Bool {
-        return speakers.dropLast().allSatisfy { $0.isCompleted }
+        return scrumTimer.speakerIndex == speakers.count - 1
     }
     private var speakerText: String {
-        guard let speakerNumber = self.currentSpeakerNumber else { return "No more speakers" }
-        return "Speaker \(speakerNumber) of \(speakers.count)"
+        return "Speaker \(currentSpeakerNumber) of \(speakers.count)"
     }
     var body: some View {
         HStack {
@@ -39,7 +40,7 @@ struct MeetingFooterView: View {
 
 struct MeetingFooterView_Previews: PreviewProvider {
     static var previews: some View {
-        MeetingFooterView(speakers: DailyScrum.sampleScrums[0].attendees.toSpeakers(), skipAction: {})
+        MeetingFooterView(scrumTimer: ScrumTimer(lengthInMinutes: 5, attendees:  DailyScrum.sampleScrums[0].attendees), skipAction: {})
             .previewLayout(.sizeThatFits)
             
     }

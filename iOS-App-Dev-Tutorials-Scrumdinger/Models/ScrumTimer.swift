@@ -44,9 +44,10 @@ class ScrumTimer: ObservableObject {
         (lengthInMinutes * 60) / speakers.count
     }
     private var secondsElapsedForSpeaker: Int = 0
-    private var speakerIndex: Int = 0
-    private var speakerText: String {
-        return "Speaker \(speakerIndex + 1): " + speakers[speakerIndex].name
+    @Published var speakerIndex: Int = 0
+    private func speakerText()-> String {
+        //return "Speaker \(speakerIndex + 1): " + speakers[speakerIndex].name
+        return speakers[speakerIndex].name
     }
     private var startDate: Date?
     
@@ -62,7 +63,7 @@ class ScrumTimer: ObservableObject {
         self.lengthInMinutes = lengthInMinutes
         self.speakers = attendees.toSpeakers()
         secondsRemaining = lengthInSeconds
-        activeSpeaker = speakerText
+        activeSpeaker = speakerText()
     }
     
     /// Start the timer.
@@ -88,7 +89,7 @@ class ScrumTimer: ObservableObject {
         secondsElapsedForSpeaker = 0
         guard speakerIndex + 1 < speakers.count else { return }
         speakerIndex += 1
-        activeSpeaker = speakerText
+        activeSpeaker = speakerText()
         startTimer()
         
     }
@@ -132,7 +133,7 @@ class ScrumTimer: ObservableObject {
         self.lengthInMinutes = lengthInMinutes
         self.speakers = attendees.toSpeakers()
         secondsRemaining = lengthInSeconds
-        activeSpeaker = speakerText
+        activeSpeaker = speakerText()
     }
 }
 

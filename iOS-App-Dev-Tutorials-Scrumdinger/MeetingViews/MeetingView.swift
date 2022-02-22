@@ -18,9 +18,8 @@ struct MeetingView: View {
                 .fill(scrum.theme.mainColor)
             VStack {
                 MeetingHeaderView(secondsElapsed: scrumTimer.secondsElapsed, secondsRemaining: scrumTimer.secondsRemaining, theme: scrum.theme)
-                Circle()
-                    .strokeBorder(lineWidth: 24,antialiased: true)
-                MeetingFooterView(speakers: scrumTimer.speakers, skipAction: scrumTimer.skipSpeaker)
+                MeetingTimerView(currentSpeaker: scrumTimer.activeSpeaker, currentIndex: scrumTimer.speakerIndex, totalCount: scrumTimer.speakers.count, theme: scrum.theme)
+                MeetingFooterView(scrumTimer: scrumTimer, skipAction: scrumTimer.skipSpeaker)
                 
             }
         }
