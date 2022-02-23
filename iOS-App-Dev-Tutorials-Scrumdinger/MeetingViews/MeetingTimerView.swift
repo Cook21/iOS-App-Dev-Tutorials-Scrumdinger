@@ -12,6 +12,7 @@ struct MeetingTimerView: View {
     var currentIndex: Int
     var totalCount: Int
     let theme: Theme
+    let isRecording: Bool
     var body: some View {
         Circle()
             .strokeBorder(lineWidth: 24)
@@ -20,6 +21,10 @@ struct MeetingTimerView: View {
                     Text(currentSpeaker)
                         .font(.title)
                     Text("is speaking")
+                    Image(systemName: isRecording ? "mic" : "mic.slash")
+                        .font(.title)
+                        .padding(.top)
+                        .accessibilityLabel(isRecording ? "with transcription" : "without transcription")
                 }
                 .accessibilityElement(children: .combine)
                 .foregroundStyle(theme.accentColor)
@@ -39,6 +44,6 @@ struct MeetingTimerView: View {
 
 struct MeetingTimerView_Previews: PreviewProvider {
     static var previews: some View {
-        MeetingTimerView(currentSpeaker: "Bill", currentIndex: 1, totalCount: 4, theme: .yellow)
+        MeetingTimerView(currentSpeaker: "Bill", currentIndex: 1, totalCount: 4, theme: .yellow, isRecording: true)
     }
 }
