@@ -12,6 +12,8 @@ struct DetailView: View {
     //source of truth
     @State private var temporaryData = DailyScrum.TemporaryData()
     @State private var isPresentingEditView = false
+    @State private var isPresentingDeleteAlert = false
+    @State private var deleteIndices: IndexSet?
     var body: some View {
         List {
             Section(header: Text("Meeting Info")) {
@@ -54,7 +56,17 @@ struct DetailView: View {
                             }
                         }
                     }
+                    .onDelete { indices in
+                        isPresentingDeleteAlert.toggle()
+                        deleteIndices = indices
+                    }
+                    
                 }
+            }
+            .alert(isPresented: $isPresentingDeleteAlert) {
+                Alert(title: Text("Delete"), message: Text("Are you sure to delete this history?"), primaryButton: .destructive(Text("Delete")){
+                    scrum.history.remove(atOffsets: deleteIndices!)
+                }, secondaryButton: .cancel(Text("Cancel")))
             }
         }.navigationTitle(scrum.title)
             .toolbar {
